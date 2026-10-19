@@ -58,8 +58,18 @@ public class Analista extends Funcionario {
 	 * @return valor das horas extras
 	 */
 	private double valorHorasExtras() {
-		//TODO
-		return 0;
+		double constantePagamento = FRACAO_HORA * SALARIO_ANALISTA;
+		double valor = 0;
+		int contadorHoras = 0;
+		
+		for (int i = 0; i < this.horasExtras; i++)
+			if(contadorHoras <= MAX_HORAS_EXTRAS){
+				valor += constantePagamento;
+			}
+			else{
+				break;
+			}
+		return valor;
 	}
 
 	/**
@@ -80,8 +90,10 @@ public class Analista extends Funcionario {
 	 * @return valor total pago ao analista
 	 */
 	public double registrarPagamento() {
-		//TODO
-		return 0;
+		double valoraPagar = SALARIO_ANALISTA + valorHorasExtras();
+		this.ultimoSalario = valoraPagar;
+		this.horasExtras = 0;
+		return valoraPagar;
 	}
 
 	/**
